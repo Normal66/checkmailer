@@ -60,7 +60,7 @@ if __name__ == '__main__':
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = []
         for _user, _pass in g_Users.items():
-            futures.append(executor.submit(checkmail, _user=_user, _pass=_pass, _proxy=g_Proxy, _kyewords=g_KeyWords, _useproxy=namespace.with_proxy, _usekeywords=namespace.with_keywords))
+            futures.append(executor.submit(checkmail, _user=_user, _pass=_pass, _proxy=g_Proxy, _keywords=g_KeyWords, _useproxy=namespace.with_proxy, _usekeywords=namespace.with_keywords))
         for future in concurrent.futures.as_completed(futures):
             _tmp_good, _tmp_bad, _tmp_well = future.result()
             g_Good += _tmp_good
